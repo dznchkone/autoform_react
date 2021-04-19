@@ -1,25 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
 
+import {Container} from "react-bootstrap";
+import Navigation from "./components/Navigation";
+import {Switch, Route} from "react-router-dom"
+import FormGenerateConfig from "./components/FormGenerateConfig";
+import FormGetConfig from "./components/FormGetConfig";
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Container fluid>
+            <Navigation/>
+            <Switch>
+                <Route path="/generate" component={FormGenerateConfig}/>
+                <Route path="/getfromdb" component={FormGetConfig}/>
+                <Route exact path="/" component={FormGenerateConfig}/>
+            </Switch>
+        </Container>
+    );
 }
 
 export default App;
