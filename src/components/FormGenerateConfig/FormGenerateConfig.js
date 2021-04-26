@@ -1,13 +1,20 @@
 import React from "react";
-import {fetchConfig} from "../../utils";
+import {downloadFile, fetchConfig} from "../../utils";
 
-const FormGenerateConfig = () => {
-    const handleSubmit = (event) => {
+const FormGenerateConfig = (props) => {
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        // fetchConfig()
+        const generate = document.querySelector('#generate');
+        const res = await fetchConfig('/cgi-bin/form.py', generate);
+        if (!res.error) {
+            downloadFile(res.msg);
+        }else {
+            props.onError(res.msg);
+        }
     }
     return (
-        <form id="generate-config" onSubmit={e => handleSubmit(e)}>
+        <form id="generate" onSubmit={handleSubmit}>
             <div className="mb-3">
                 <label htmlFor="hostname">Hostname</label>
                 <input type="text" name="HOSTNAME" className="form-control" id="hostname"/>
