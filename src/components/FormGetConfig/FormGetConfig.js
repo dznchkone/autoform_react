@@ -7,11 +7,15 @@ const FormGetConfig = (props) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const getConfig = document.querySelector('#get-config');
-        const res = await fetchConfig('/cgi-bin/form.py', getConfig);
-        if (!res.error) {
-            downloadFile(res.msg);
-        }else {
-            props.onError(res.msg);
+        try {
+            const res = await fetchConfig('/cgi-bin/auth.py', getConfig);
+            if (!res.error) {
+                downloadFile(res.msg);
+            }else {
+                throw new Error(res.msg);
+            }
+        } catch (e) {
+            props.onError(e.toString());
         }
     }
 

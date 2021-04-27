@@ -6,12 +6,17 @@ const FormGenerateConfig = (props) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const generate = document.querySelector('#generate');
-        const res = await fetchConfig('/cgi-bin/form.py', generate);
-        if (!res.error) {
-            downloadFile(res.msg);
-        }else {
-            props.onError(res.msg);
+        try {
+            const res = await fetchConfig('/cgi-bin/form.py', generate);
+            if (!res.error) {
+                downloadFile(res.msg);
+            }else {
+                throw new Error(res.msg);
+            }
+        } catch (e) {
+            props.onError(e.toString());
         }
+
     }
     return (
         <form id="generate" onSubmit={handleSubmit}>
