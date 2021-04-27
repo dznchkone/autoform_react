@@ -3,6 +3,10 @@ label{
   font-weight: bold;
 }
 
+.form-container {
+  max-width: 90%;
+}
+
 .toast-container {
   position: absolute;
   top: 0;

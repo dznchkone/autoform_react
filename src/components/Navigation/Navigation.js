@@ -1,13 +1,17 @@
 import React from "react";
 import {Nav, Navbar} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 const Navigation = () =>{
     return (
         <Navbar bg="dark" variant="dark">
-            <Nav className="mr-auto">
-                <Link to="generate" className="nav-link" >Сгенерировать</Link>
-                <Link to="getfromdb" className="nav-link">Получить из БД</Link>
+            <Nav>
+                <Nav.Item>
+                    <NavLink to="generate" className="nav-link" activeClassName="active">Сгенерировать</NavLink>
+                </Nav.Item>
+                <Nav.Item>
+                    <NavLink to="getfromdb" className="nav-link" activeClassName="active">Получить из БД</NavLink>
+                </Nav.Item>
             </Nav>
         </Navbar>
     )

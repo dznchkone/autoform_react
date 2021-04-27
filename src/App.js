@@ -14,14 +14,13 @@ function App() {
 
     const handleErrorMessage = (msg)=>  {
         const error = {
-            id: new Date().getMilliseconds(),
+            id: Date.now(),
             msg
         }
         setErrors(errors=>[...errors, error]);
     }
 
     const clearError = (id)=> {
-        console.log(`delete item ${id} in state`);
         const itemIndex = errors.findIndex(item => item.id === id);
         setErrors(errors=>[...errors.slice(0,itemIndex),...errors.slice(itemIndex+1)]);
     }
@@ -32,7 +31,7 @@ function App() {
         <Container fluid>
             <Navigation/>
             <Row className="justify-content-center">
-                <Col>
+                <Col className='form-container'>
                     <Switch>
                         <Route path="/generate">
                             <FormGenerateConfig onError={handleErrorMessage}/>

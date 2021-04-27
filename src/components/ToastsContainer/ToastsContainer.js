@@ -22,13 +22,17 @@ function ToastWrapper(props) {
         props.onClear(props.id);
     }
 
+    const getDateAndTime = (timestamp) => {
+        return new Date(timestamp).toLocaleString();
+    }
+
     return (
-        <Toast  onClose={handleClose} delay={3000} autohide>
+        <Toast  onClose={handleClose}>
             <Toast.Header>
-                <strong className="mr-auto">Error!</strong>
-                <small>{props.id}</small>
+                <strong className="mr-auto text-danger">Error!</strong>
+                <small>{getDateAndTime(props.id)}</small>
             </Toast.Header>
-            <Toast.Body>{props.item}</Toast.Body>
+            <Toast.Body className='bg-secondary text-white'>{props.item}</Toast.Body>
         </Toast>
     )
 }
