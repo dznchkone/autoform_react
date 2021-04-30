@@ -6,6 +6,10 @@ const FormGenerateConfig = (props) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const generate = document.querySelector('#generate');
+        /*
+        В блоке try с помощью функции fetchConfig отправляем данные формы на бэкенд, если функция вернула сообщение с ошибкой кидаем Error.
+        В блоке catch поднимаем Error в компонент App с помощью прокинутой через пропсы функции onError.
+        */
         try {
             const res = await fetchConfig('/cgi-bin/form.py', generate);
             if (!res.error) {
