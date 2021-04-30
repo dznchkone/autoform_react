@@ -9,7 +9,13 @@ import ToastsContainer from "./components/ToastsContainer";
 import {useState} from "react";
 
 function App() {
-    const [errors, setErrors] = useState([]);
+    /*
+    Для передачи ошибок из компонентов с формой в компоненте App использую хук состояния useState и  функцию handleErrorMessage, 
+    которую передаю в виде пропса в компонент формы, т.е если в форме при передаче данных на бэкенд происходит ошибка, она поднимается в компонент App.
+    Далее передаю массив errors в компонент-обёртку ToastsContainer,так же в ToastsContainer передаею функцию clearError в виде пропса для поднятия состояния, 
+    т.е. при закрытии всплывающего сообщения, я так же удаляю соответсующий элемент из массива errors.
+    */
+    const [errors, setErrors] = useState([]); 
 
 
     const handleErrorMessage = (msg)=>  {
