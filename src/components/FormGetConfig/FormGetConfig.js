@@ -7,6 +7,10 @@ const FormGetConfig = (props) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const getConfig = document.querySelector('#get-config');
+        /*
+        В блоке try с помощью функции fetchConfig отправляем данные формы на бэкенд, если функция вернула сообщение с ошибкой кидаем Error.
+        В блоке catch поднимаем Error в компонент App с помощью прокинутой через пропсы функции onError.
+        */
         try {
             const res = await fetchConfig('/cgi-bin/auth.py', getConfig);
             if (!res.error) {
