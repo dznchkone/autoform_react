@@ -6,8 +6,10 @@ const fetchConfig = async (url, form) => {
     })
 
     if (response.ok) {
+        //Если ответ пришел экспортируем json в объект
         return await response.json();
     } else {
+        // Если ответ не пришел, генерируем свой объект с ошибкой
         const msg = `После запроса на ${url} произошла ошибка HTTP: ${response.status}`;
         return {
             error: -1,
