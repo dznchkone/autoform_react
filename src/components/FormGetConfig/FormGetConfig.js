@@ -29,15 +29,15 @@ const FormGetConfig = (props) => {
         <form id="get-config" onSubmit={handleSubmit}>
             <div className="mb-3">
                 <label htmlFor="get-management-ip">Management IP:</label>
-                <input type="text" name="MANAGEMENT_IP" id="get-management-ip" className="form-control"/>
+                <input type="text" name="MANAGEMENT_IP" id="get-management-ip" className="form-control" autoComplete="off"/>
             </div>
             <div className="mb-3">
                 <label htmlFor="login">Login</label>
-                <input type="text" name="LOGIN" id="login" className="form-control"/>
+                <input type="text" name="LOGIN" id="login" className="form-control" autoComplete="off"/>
             </div>
             <div className="mb-3">
                 <label htmlFor="password">Password</label>
-                <input type="text" name="PASSWORD" id="password" className="form-control"/>
+                <input type="text" name="PASSWORD" id="password" className="form-control" autoComplete="off"/>
             </div>
             <button className="btn btn-primary">Op</button>
         </form>
