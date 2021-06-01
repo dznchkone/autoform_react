@@ -37,7 +37,7 @@ const FormGetConfig = (props) => {
             </div>
             <div className="mb-3">
                 <label htmlFor="password">Password</label>
-                <input type="text" name="PASSWORD" id="password" className="form-control" autoComplete="off"/>
+                <input type="password" name="PASSWORD" id="password" className="form-control" autoComplete="off"/>
             </div>
             <button className="btn btn-primary">Op</button>
         </form>
