@@ -1,8 +1,8 @@
-//фетч запрос на cgi скрипт
+//Отправляем JSON
 const fetchConfig = async (url, form) => {
     let response = await fetch(url, {
         method: "POST",
-        body: new FormData(form)
+        body: JSON.stringify(Object.fromEntries(new FormData(form)))
     })
 
     if (response.ok) {
@@ -10,7 +10,7 @@ const fetchConfig = async (url, form) => {
         return await response.json();
     } else {
         // Если ответ не пришел, генерируем свой объект с ошибкой
-        const msg = `После запроса на ${url} произошла ошибка HTTP: ${response.status}`;
+        const msg = `После запроса на ${url} произошла ошибка HTTP: ${response.statusText}`;
         return {
             error: -1,
             msg

@@ -12,7 +12,7 @@ const FormGetConfig = (props) => {
         В блоке catch поднимаем Error в компонент App с помощью прокинутой через пропсы функции onError.
         */
         try {
-            const res = await fetchConfig('/cgi-bin/auth.py', getConfig);
+            const res = await fetchConfig('/api/takefromdb', getConfig);
             if (!res.error) {
                 downloadFile(res.msg);
             }else {
