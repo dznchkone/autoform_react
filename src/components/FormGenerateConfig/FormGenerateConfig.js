@@ -11,7 +11,7 @@ const FormGenerateConfig = (props) => {
         В блоке catch поднимаем Error в компонент App с помощью прокинутой через пропсы функции onError.
         */
         try {
-            const res = await fetchConfig('/cgi-bin/form.py', generate);
+            const res = await fetchConfig('/api/generate', generate);
             if (!res.error) {
                 downloadFile(res.msg);
             }else {
