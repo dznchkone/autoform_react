@@ -1,6 +1,8 @@
 import React from "react";
 import {Toast} from "react-bootstrap";
 
+import './ToastContainer.css';
+
 const ToastsContainer = ({messages, clearError}) => {
 
     const toasts = messages.map((item, i) => {

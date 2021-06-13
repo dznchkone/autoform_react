@@ -36,7 +36,7 @@ function App() {
     return (
         <Container fluid>
             <Navigation/>
-            <Row className="justify-content-center">
+            <Row className="justify-content-center pt-3">
                 <Col className='form-container'>
                     <Switch>
                         <Route path="/generate">
@@ -46,7 +46,7 @@ function App() {
                             <FormGetConfig onError={handleErrorMessage}/>
                         </Route>
                         <Route exact path="/">
-                            <Redirect to="/generate"/>
+                            <Redirect to="/getfromdb"/>
                         </Route>
                     </Switch>
                 </Col>

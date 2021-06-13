@@ -1,0 +1,38 @@
+.navbar {
+    padding-bottom: 0;
+}
+
+.active {
+    color: #fff;
+    border-bottom: 3px solid #13CE66;
+}
+
+.custom-control-label::before {
+    position: absolute;
+    top: .25rem;
+    left: -1.5rem;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    pointer-events: none;
+    content: "";
+    background-color: #969FAA;
+    border: #adb5bd solid 1px;
+}
+
+.custom-switch .custom-control-label::after {
+
+    background-color: #ffffff;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    color: #13CE66;
+    background-color: white;
+    border-color: white;
+}
+
+.custom-switch .custom-control-input:checked~.custom-control-label::after {
+    background-color: #13CE66;
+    transform: translateX(.75rem);
+}
+
