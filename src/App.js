@@ -16,7 +16,7 @@ function App() {
     т.е. при закрытии всплывающего сообщения, я так же удаляю соответсующий элемент из массива errors.
     */
     const [errors, setErrors] = useState([]); 
-
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     const handleErrorMessage = (msg)=>  {
         const error = {
@@ -26,6 +26,10 @@ function App() {
         setErrors(errors=>[...errors, error]);
     }
 
+    const handleAuth = () => {
+        setIsAuthenticated(isAuthenticated=>!isAuthenticated)
+    }
+
     const clearError = (id)=> {
         const itemIndex = errors.findIndex(item => item.id === id);
         setErrors(errors=>[...errors.slice(0,itemIndex),...errors.slice(itemIndex+1)]);
@@ -33,9 +37,10 @@ function App() {
 
 
 
+
     return (
         <Container fluid>
-            <Navigation/>
+            <Navigation isAuthenticated={isAuthenticated} auth={handleAuth}/>
             <Row className="justify-content-center pt-3">
                 <Col className='form-container'>
                     <Switch>

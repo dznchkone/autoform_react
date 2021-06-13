@@ -6,7 +6,9 @@ import {NavLink} from "react-router-dom";
 
 import './Navbar.css';
 
-const Navigation = () => {
+const Navigation = (props) => {
+
+    const generate = props.isAuthenticated ? <NavLink to="generate" className="nav-link" activeClassName="active">Сгенерировать</NavLink>: null;
     return (
         <Navbar bg="dark" variant="dark">
             <Nav>
@@ -14,11 +16,11 @@ const Navigation = () => {
                     <NavLink to="getfromdb" className="nav-link" activeClassName="active">Получить из БД</NavLink>
                 </Nav.Item>
                 <Nav.Item>
-                    <NavLink to="generate" className="nav-link" activeClassName="active">Сгенерировать</NavLink>
+                    {generate}
                 </Nav.Item>
             </Nav>
-            <FormCheck
-                disabled={false}
+            <FormCheck checked={props.isAuthenticated}
+                onClick={()=>props.auth()}
                 type="switch"
                 id="is-admin"
                 className="ml-auto"/>
