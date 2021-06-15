@@ -1,6 +1,6 @@
 // Простой навбар
 
-import React, {useEffect} from "react";
+import React from "react";
 import {Nav, Navbar, FormCheck} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
 
@@ -20,7 +20,7 @@ const Navigation = (props) => {
                 </Nav.Item>
             </Nav>
             <FormCheck checked={props.isAuthenticated}
-                onClick={()=>props.auth()}
+                onChange={()=>props.auth()}
                 type="switch"
                 id="is-admin"
                 className="ml-auto"/>

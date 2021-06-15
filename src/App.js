@@ -6,7 +6,7 @@ import {Switch, Route, Redirect} from "react-router-dom"
 import FormGenerateConfig from "./components/FormGenerateConfig";
 import FormGetConfig from "./components/FormGetConfig";
 import ToastsContainer from "./components/ToastsContainer";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 function App() {
     /*
@@ -15,39 +15,48 @@ function App() {
     Далее передаю массив errors в компонент-обёртку ToastsContainer,так же в ToastsContainer передаею функцию clearError в виде пропса для поднятия состояния, 
     т.е. при закрытии всплывающего сообщения, я так же удаляю соответсующий элемент из массива errors.
     */
-    const [errors, setErrors] = useState([]); 
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    const handleErrorMessage = (msg)=>  {
+
+    const [errors, setErrors] = useState([]);
+    const [isAuthenticated, setIsAuthenticated] = useState(+localStorage.getItem('auth'));
+
+    const handleErrorMessage = (msg) => {
         const error = {
             id: Date.now(),
             msg
         }
-        setErrors(errors=>[...errors, error]);
+        setErrors(errors => [...errors, error]);
     }
 
     const handleAuth = () => {
-        setIsAuthenticated(isAuthenticated=>!isAuthenticated)
+        if (!isAuthenticated) {
+            setIsAuthenticated( ()=> 1 );
+        } else  {
+            setIsAuthenticated( ()=> 0 );
+        }
     }
 
-    const clearError = (id)=> {
+    useEffect(()=>localStorage.setItem('auth',isAuthenticated.toString()),[isAuthenticated])
+
+    const clearError = (id) => {
         const itemIndex = errors.findIndex(item => item.id === id);
-        setErrors(errors=>[...errors.slice(0,itemIndex),...errors.slice(itemIndex+1)]);
+        setErrors(errors => [...errors.slice(0, itemIndex), ...errors.slice(itemIndex + 1)]);
     }
-
-
 
 
     return (
         <Container fluid>
             <Navigation isAuthenticated={isAuthenticated} auth={handleAuth}/>
-            <Row className="justify-content-center pt-3">
+            <Row className="justify-content-center pt-3 pb-3">
                 <Col className='form-container'>
                     <Switch>
-                        <Route path="/generate">
-                            <FormGenerateConfig onError={handleErrorMessage}/>
+                        <Route path="/generate" render={() => {
+                            return isAuthenticated ? <FormGenerateConfig onError={handleErrorMessage}/> :
+                                <Redirect to="/getfromdb"/>;
+                        }}>
+
                         </Route>
-                        <Route path="/getfromdb" >
+                        <Route path="/getfromdb">
                             <FormGetConfig onError={handleErrorMessage}/>
                         </Route>
                         <Route exact path="/">
