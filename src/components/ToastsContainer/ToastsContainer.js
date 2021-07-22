@@ -30,8 +30,8 @@ function ToastWrapper(props) {
 
     return (
         <Toast  onClose={handleClose}>
-            <Toast.Header>
-                <strong className="mr-auto text-danger">Error!</strong>
+            <Toast.Header d>
+                <strong className="me-auto text-danger">Error!</strong>
                 <small>{getDateAndTime(props.id)}</small>
             </Toast.Header>
             <Toast.Body className='bg-secondary text-white'>{props.item}</Toast.Body>

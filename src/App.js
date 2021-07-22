@@ -7,6 +7,7 @@ import FormGenerateConfig from "./components/FormGenerateConfig";
 import FormGetConfig from "./components/FormGetConfig";
 import ToastsContainer from "./components/ToastsContainer";
 import {useEffect, useState} from "react";
+import Footer from "./components/Footer/Footer";
 
 function App() {
     /*
@@ -24,7 +25,7 @@ function App() {
         const error = {
             id: Date.now(),
             msg
-        }
+        };
         setErrors(errors => [...errors, error]);
     }
 
@@ -45,9 +46,9 @@ function App() {
 
 
     return (
-        <Container fluid>
+        <Container fluid className="">
             <Navigation isAuthenticated={isAuthenticated} auth={handleAuth}/>
-            <Row className="justify-content-center pt-3 pb-3">
+            <Row className="justify-content-center">
                 <Col className='form-container'>
                     <Switch>
                         <Route path="/generate" render={() => {
@@ -65,6 +66,7 @@ function App() {
                     </Switch>
                 </Col>
             </Row>
+            <Footer/>
             <ToastsContainer messages={errors} clearError={clearError}/>
         </Container>
     );

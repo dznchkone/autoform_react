@@ -10,7 +10,7 @@ const Navigation = (props) => {
 
     const generate = props.isAuthenticated ? <NavLink to="generate" className="nav-link" activeClassName="active">Сгенерировать</NavLink>: null;
     return (
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="dark" variant="dark" className="d-flex justify-content-between">
             <Nav>
                 <Nav.Item>
                     <NavLink to="getfromdb" className="nav-link" activeClassName="active">Получить из БД</NavLink>
@@ -23,7 +23,7 @@ const Navigation = (props) => {
                 onChange={()=>props.auth()}
                 type="switch"
                 id="is-admin"
-                className="ml-auto"/>
+                />
         </Navbar>
     )
 }

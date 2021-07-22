@@ -4,6 +4,8 @@ label{
 }
 
 .form-container {
+  min-height: calc(100vh - 101px);
   max-width: 90%;
+  padding-top: 20px;
 }
 

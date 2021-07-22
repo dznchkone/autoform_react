@@ -3,7 +3,6 @@ import {downloadFile, fetchConfig} from "../../utils";
 
 const FormGetConfig = (props) => {
 
-
     const handleSubmit = async (event) => {
         event.preventDefault();
         const getConfig = document.querySelector('#get-config');
@@ -16,14 +15,13 @@ const FormGetConfig = (props) => {
             if (!res.error) {
                 downloadFile(res.msg);
             }else {
-                throw new Error(res.msg);
+                props.onError(res.msg);
+
             }
         } catch (e) {
             props.onError(e.toString());
         }
     }
-
-
 
     return (
         <form id="get-config" onSubmit={handleSubmit}>
@@ -33,11 +31,11 @@ const FormGetConfig = (props) => {
             </div>
             <div className="mb-3">
                 <label htmlFor="login">Login</label>
-                <input type="text" name="LOGIN" id="login" className="form-control" autoComplete="off"/>
+                <input type="text" name="LOGIN" id="login" className="form-control" autoComplete="off" placeholder='логин от rancid'/>
             </div>
             <div className="mb-3">
                 <label htmlFor="password">Password</label>
-                <input type="password" name="PASSWORD" id="password" className="form-control" autoComplete="off"/>
+                <input type="password" name="PASSWORD" id="password" className="form-control" autoComplete="off" placeholder='пароль от rancid'/>
             </div>
             <button className="btn btn-primary">Op</button>
         </form>

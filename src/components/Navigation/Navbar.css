@@ -1,10 +1,12 @@
 .navbar {
     padding-bottom: 0;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .active {
     color: #fff;
-    border-bottom: 3px solid #13CE66;
+    border-bottom: 3px solid #0d6efd;
 }
 
 .custom-control-label::before {
