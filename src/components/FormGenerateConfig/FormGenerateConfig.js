@@ -34,7 +34,7 @@ const FormGenerateConfig = (props) => {
                 <input type="text" name="VLANS" className="form-control" id="vlans" autoComplete="off"/>
             </div>
             <div className="mb-3">
-                <label htmlFor="client-vlan">Client vlan:</label>
+                <label htmlFor="client-vlan">IPoE vlan:</label>
                 <input type="text" name="CLIENT_VLAN" className="form-control" id="client-vlan" autoComplete="off"/>
             </div>
             <div className="mb-3">
